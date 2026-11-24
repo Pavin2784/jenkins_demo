@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShopEasy | Demo Store</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">ShopEasy</a>
+    <nav><a href="#products">Products</a><a href="#orders">Orders</a></nav>
+    <button id="cart-toggle" class="cart-button">Cart (<span id="cart-count">0</span>)</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">YOUR EVERYDAY STORE</p>
+        <h1>Find something<br>you’ll love.</h1>
+        <p>Explore our demo collection and place a sample order.</p>
+        <a class="primary-link" href="#products">Shop products</a>
+      </div>
+      <div class="hero-art" aria-hidden="true">🛍️</div>
+    </section>
+
+    <section id="products" class="section">
+      <div class="section-heading"><div><p class="eyebrow">THE COLLECTION</p><h2>Popular products</h2></div></div>
+      <p id="status" class="status">Loading products…</p>
+      <div id="product-grid" class="product-grid"></div>
+    </section>
+
+    <section id="orders" class="section orders-section">
+      <p class="eyebrow">YOUR ACTIVITY</p><h2>Recent demo orders</h2>
+      <div id="orders-list" class="orders-list">No orders loaded yet.</div>
+    </section>
+  </main>
+
+  <aside id="cart-panel" class="cart-panel" aria-label="Shopping cart">
+    <div class="cart-heading"><h2>Your cart</h2><button id="cart-close" class="icon-button" aria-label="Close cart">✕</button></div>
+    <div id="cart-items"></div>
+    <div class="cart-total">Total <strong id="cart-total">$0.00</strong></div>
+    <form id="checkout-form">
+      <label for="customer-name">Your name</label>
+      <input id="customer-name" required maxlength="120" placeholder="Demo customer">
+      <button class="checkout-button" type="submit">Place demo order</button>
+    </form>
+    <p class="fine-print">Demo checkout only. No payment is collected.</p>
+  </aside>
+  <div id="overlay" class="overlay"></div>
+  <footer>ShopEasy DevOps learning project · Demo store only</footer>
+  <script src="app.js"></script>
+</body>
+</html>

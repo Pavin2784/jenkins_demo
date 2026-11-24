@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: shopeasy
+      POSTGRES_USER: shopeasy
+      POSTGRES_PASSWORD: shopeasy-local-password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shopeasy -d shopeasy"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+
+  backend:
+    build: ./backend
+    networks:
+      default:
+        aliases:
+          - shopeasy-backend
+    environment:
+      DATABASE_URL: postgresql+psycopg2://shopeasy:shopeasy-local-password@db:5432/shopeasy
+      PORT: "5000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
