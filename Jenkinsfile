@@ -24,10 +24,10 @@ pipeline {
             steps {
                 sh '''
                     docker run --rm \
-                      -v "$WORKSPACE/backend:/app" \
+                      -v "$WORKSPACE/app:/app" \
                       -w /app \
                       python:3.12-slim \
-                      sh -c "pip install --no-cache-dir -r requirements.txt -r requirements-dev.txt && pytest -q"
+                      sh -c "pip install --no-cache-dir -r requirements.txt -r requirements-dev.txt && pytest -q" && pytest -q"
                 '''
             }
         }
@@ -35,7 +35,7 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 sh '''
-                    docker build -t ${BACKEND_IMAGE}:${BUILD_NUMBER} ./backend
+                    docker build -t ${BACKEND_IMAGE}:${BUILD_NUMBER} ./app
                     docker build -t ${FRONTEND_IMAGE}:${BUILD_NUMBER} ./frontend
                 '''
             }
