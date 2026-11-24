@@ -7,9 +7,9 @@ pipeline {
     }
 
     environment {
-        DOCKERHUB_NAMESPACE = 'YOUR_DOCKERHUB_USERNAME'
-        BACKEND_IMAGE = "${DOCKERHUB_NAMESPACE}/shopeasy-backend"
-        FRONTEND_IMAGE = "${DOCKERHUB_NAMESPACE}/shopeasy-frontend"
+        DOCKERHUB_NAMESPACE = 'pavinb'
+        BACKEND_IMAGE = "pavinb/shopeasy-backend"
+        FRONTEND_IMAGE = "pavinb/shopeasy-frontend"
         K8S_NAMESPACE = 'shopeasy'
     }
 
