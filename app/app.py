@@ -103,7 +103,7 @@ def create_app(test_config=None):
         for attempt in range(15):
             try:
                 db.create_all()
-                if Product.query.count() == 0:
+                if not app.config.get("TESTING") and Product.query.count() == 0:
                     db.session.add_all([
                         Product(name="Wireless Headphones", description="Comfortable everyday headphones", price=49.99,
                                 image="https://placehold.co/600x400?text=Headphones"),
