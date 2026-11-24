@@ -27,7 +27,7 @@ pipeline {
                       -v "$WORKSPACE/app:/app" \
                       -w /app \
                       python:3.12-slim \
-                      sh -c "pip install --no-cache-dir -r requirements.txt -r requirements-dev.txt && pytest -q" && pytest -q"
+                      sh -c "pip install --no-cache-dir -r requirements.txt -r requirements-dev.txt &&  pytest -q"
                 '''
             }
         }
